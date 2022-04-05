@@ -1,0 +1,194 @@
+body{
+    background-color: rgb(247, 247, 247);
+}
+
+section{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 100%;
+    margin-top: -80px;
+}
+p{
+    width: 100%;
+    height: 0px;
+    text-align: center;
+    font-size: 100px;
+    color: rgb(243, 165, 102);
+}
+.To-Do{
+    width: 100%;
+    height: 60px;
+    border: 0.5px solid rgb(216, 203, 203);
+    background-color:#fff;
+    margin-top: 40px;
+}
+
+.To-Do .Tick-All{
+    width: 10%;
+    height: 100%;
+    transform: rotate(90deg);
+    font-size: 40px;
+    display: inline-block;
+    margin-top: 5px;
+    padding-left: 18px;
+    cursor: pointer;
+}
+
+.To-Do input{
+    width: 80%;
+    height: 50px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+}
+.To-Do .Input-Work{
+    font-size: 35px;
+}
+
+.To-Do ::placeholder {
+    font-style: italic;
+    opacity: 0.2;
+    color: rgb(94, 94, 94);
+}
+
+.Shadow{
+    opacity: 0.2;
+}
+
+.Work-List.hidden{
+    opacity: 0;
+}
+/*Detail*/
+.Detail{
+    width: 100%;
+    height: 50px;
+    margin-top: 1px;
+    border: 0.5px solid rgb(216, 203, 203);
+    background-color: #fff;
+}
+
+.Detail button{
+    border: none;
+    background-color: #fff;
+    margin-top: 17px;
+    height: 20px;
+}
+
+.Detail .Number-Of-Work{
+    margin-left: 10px;
+}
+
+/*Button View*/
+.Detail .Button-View{
+    width: 194px;
+    display: inline-block;
+    margin-left: 65px;
+    height: 50px;
+}
+.Detail .Btn-1{
+    width: 30px;
+}
+.Detail .Btn-2{
+    width: 55px;
+    text-align: center;
+}
+.Detail .Btn-3{
+    width: 85px;
+}
+.Detail .Btn-View{
+    transition: 0.5s all;
+    margin-left: 5px;
+    cursor: pointer;
+    height: 20px;
+    font-size: 14px;
+}
+.Detail .Btn-View.checked{
+    border: 0.5px solid rgb(241, 203, 203);
+}
+
+.Detail .Btn-View:hover{
+    border: 0.5px solid rgb(241, 203, 203);
+}
+
+/*Button Clear*/
+.Detail .Clear{
+    width: 113px;
+    display: inline-block;
+    margin-left: 33px;
+}
+
+.Detail .Btn-Clear{
+    cursor: pointer;
+}
+
+.Detail .Clear:hover{
+    border-bottom: 0.5px solid #222;
+    padding-bottom: 0px;
+}
+
+/*work*/
+.Container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 50px;
+    border: 0.5px solid rgb(216, 203, 203);
+    background-color: #fff;
+    margin-top: 1px;
+}
+
+.Container .box-work, .box-work-1{
+    height: 30px;
+    width: 100%;
+    margin-top: 7px;
+}
+.Container .box-work, .box-work-1 input{
+    height: 100%;
+    width: 30px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+.Container .box-work, .box-work-1 input:checked{
+    color: gray;
+    text-decoration:line-through;
+}
+.Container .box-work, .box-work-1  label{
+    vertical-align: middle;
+    height: 100%;
+    width: 380px;
+    margin-left: 20px;
+}
+
+.Container .box-work, .box-work-1 .Value-work{
+    display: inline-block;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+.Container .box-work, .box-work-1  span{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.Container .box-work, .box-work-1 .Clear-work, .Clear-work-1{
+    font-size: 25px;
+    display: inline-block;
+    text-transform: uppercase;
+    color: red;
+    cursor: pointer;
+}
+
+.hidden{
+    opacity: 0;
+    cursor: none;
+}
+
+/* .hidden-clear{
+    opacity: 0;
+} */
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}

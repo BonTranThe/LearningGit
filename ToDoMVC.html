@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do MVC</title>
+    <link rel="stylesheet" href="Css/ToDoMVC.css">
+</head>
+<body>
+    <section>
+        <p>todos</p>
+        <div class="To-Do"> 
+             <span class="Tick-All Shadow">❯</span>
+             <input type="text" class="Input-Work" placeholder="What needs to be done?" id="Content">
+        </div>
+        <div class="Work-List hidden"></div>
+        <div class="Detail hidden">
+            <span class="Number-Of-Work">0</span><span> item left</span>
+            <span class="Button-View">
+                <button type="button" class="Btn Btn-View Btn-1 checked">All</button>
+                <button type="button" class="Btn Btn-View Btn-2">Active</button>
+                <button type="button" class="Btn Btn-View Btn-3">Completed</button>
+            </span>
+            <span class="Clear"><button type="button" class="Btn Btn-Clear hidden">Clear Completed</button></span>
+        </div>
+    </section>
+    <div class="Container hidden">
+        <div class="box-work">
+            <input type="checkbox" name="work" id="work">
+            <label for="work" class="Value-work"></label>
+            <span class="Clear-work hidden-clear">x</span>
+        </div>
+    </div>
+
+    <script src="JS/ToDoMVC.js"></script>
+</body>
+</html>
