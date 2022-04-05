@@ -1,67 +1,138 @@
 //Check Button-View
-const btnView = document.querySelectorAll(".Btn-View");
+const btnViewSelector = document.querySelectorAll(".Btn-View");
 
 let checkBtnView = 0;
-btnView.forEach((item,i) => {
+btnViewSelector.forEach((item,i) => {
     item.addEventListener("click", () => {
-        btnView[checkBtnView].classList.remove("checked");
-        btnView[i].classList.add("checked");
+        btnViewSelector[checkBtnView].classList.remove("checked");
+        btnViewSelector[i].classList.add("checked");
         checkBtnView = i;
     })
 })
 //Get Value in Input and Show List Work After Push
-let contentWork = document.querySelector("#Content");
-let contentLabel = document.querySelector(".Value-work");
-let workList = document.querySelector(".Work-List");
-let container = document.querySelectorAll(".Container");
-let detail = document.querySelector(".Detail");
-const btnClear = document.querySelector(".Btn-Clear");
-let numberOfWork = document.querySelector(".Number-Of-Work");
+const contentWork = document.querySelector("#Content");
+const contentLabel = document.querySelector(".Value-work");
+const workList = document.querySelector(".Work-List");
+const detail = document.querySelector(".Detail");
+const btnClearSelector = document.querySelector(".Btn-Clear");
+const numberOfWork = document.querySelector(".Number-Of-Work");
 
-let count = 0;
+function hideWorkListAndDetail(){
+    workList.classList.add('hidden');
+    detail.classList.add("hidden");
+}
+
+function showWorkListAndDetail(){
+    workList.classList.remove('hidden');
+    detail.classList.remove("hidden");
+}
+
+function showClearAllCompleted(){
+    btnClear.classList.remove("hidden"); 
+}
+
+function hideClearAllCompleted(){
+    btnClear.classList.add("hidden"); 
+}
+
+function addCompleted(el) {
+    el.forEach((item) => {
+        item.classList.add('completed');
+    });
+}
+
+function removeCompleted(el) {
+    el.forEach((item) => {
+        item.classList.remove('completed');
+    });
+}
+
+function checkBox(el) {
+    el.forEach((item) => {
+        item.checked = true;
+    });
+}
+
+function uncheckBox(el) {
+    el.forEach((item) => {
+        item.checked = false;
+    });
+}
+
+
+let countID = 0;
 document.querySelector("#Content").addEventListener("keypress", (e) => {
     if(e.key === "Enter" && contentWork.value !== ""){
         contentLabel.innerHTML = contentWork.value; 
         workList.innerHTML +=        
-            `<div class="Container">
-                <div class="box-work-1">
-                    <input type="checkbox" name="work-1" id="${count +1}" class="work-1">
-                    <label for="${count +1}" class="Value-work">${contentLabel.innerHTML}</label>
-                    <span class="Clear-work-1">x</span>
-                </div>
-            </div>`;
-        workList.classList.remove("hidden");
+        `<div class="Container-1">
+            <div class="Box-work-1">
+                <input type="checkbox" name="work-1" id="${countID +1}" class="work-1">
+                <label for="${countID +1}" class="Value-work">${contentLabel.innerHTML}</label>
+                <span class="Clear-work-1 remove">x</span>
+            </div>
+        </div>`;
+        showWorkListAndDetail();
         contentWork.value = "";
-        count++;
-        numberOfWork.innerHTML = count;
+        countID++;
+        const container = document.querySelectorAll(".Container-1");
+        const textWork = document.querySelectorAll('.Value-work');
+        var numberOfContainer = container.length;
+        numberOfWork.innerHTML = numberOfContainer;
+        removeCompleted(textWork);
     }
+
+    //Close Mission
+    workList.addEventListener('click', function (e) {
+        const container = document.querySelectorAll(".Container-1");
+        const location = e.target;
+        var numberOfContainer = container.length;
+        if (location.classList.contains('remove')) {
+            location.closest('.Container-1').remove();
+            numberOfWork.innerHTML = numberOfContainer;
+        }      
+        if(numberOfContainer == '0'){
+            hideWorkListAndDetail();
+        }
+    });
     
-    if(count > 0){
-        detail.classList.remove("hidden");
-        btnClear.classList.remove("hidden");  
-    } 
+    //Tick simple input
+    if(countID > 0){
+        // showWorkListAndDetail();
+        btnClearSelector.classList.remove("hidden");  
+        const checkBox = document.querySelectorAll('.work-1');
+        const textWork = document.querySelectorAll('.Value-work');
+        content = contentLabel.innerHTML;
+        for(let i = 0; i < checkBox.length; i++){
+            checkBox[i].addEventListener('change', () => {
+                textWork[i].classList.toggle('completed');
+                const checkboxes = document.querySelectorAll('input[name = "work-1"]:checked');
+                const container = document.querySelectorAll(".Container-1");
+                const numberOfWork = document.querySelector(".Number-Of-Work");
+                var numberOfContainer = parseInt(container.length);
+                var numberOfChecboxes = parseInt(checkboxes.length);
+                numberOfWork.innerHTML = numberOfContainer - numberOfChecboxes; 
+            });
+        }
+    }
+
+    //Clear Completed
+    btnClearSelector.addEventListener('click', function () {
+        const checkWork = document.querySelectorAll('.Container-1 input:checked');
+        // checkWork.splice(0, checkWork.length);
+    }) 
 })
-                
-//Tick All
-const tick = document.querySelector('.Tick-All');
-tick.addEventListener('click', () => {
-    let checkWork = document.querySelectorAll('input[name = "work-1"]');
-    let textWork = document.querySelectorAll('.Value-work');
-    if(tick.classList.contains('Shadow') == true){
-        tick.classList.remove('Shadow');
-        checkWork.forEach((item) => {
-            item.checked = true;
-        });
-        textWork.forEach((item) => {
-            item.classList.add('completed'); 
-        })
+const tickAllSelector = document.querySelector('.Tick-All');
+tickAllSelector.addEventListener('click', () => {
+    const checkWork = document.querySelectorAll('input[name = "work-1"]');
+    const textWork = document.querySelectorAll('.Value-work');
+    if(tickAllSelector.classList.contains('Shadow') == true){
+        tickAllSelector.classList.remove('Shadow');
+        checkBox(checkWork);
+        addCompleted(textWork);
     } else {
-        tick.classList.add('Shadow');
-        checkWork.forEach((item) => {
-            item.checked = false;
-        });
-        textWork.forEach((item) => {
-           item.classList.remove('completed'); 
-        })
+        tickAllSelector.classList.add('Shadow');
+        uncheckBox(checkWork);
+        removeCompleted(textWork);
     }
 })

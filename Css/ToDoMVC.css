@@ -128,7 +128,7 @@ p{
 }
 
 /*work*/
-.Container{
+.Container, .Container-1{
     margin-left: auto;
     margin-right: auto;
     width: 500px;
@@ -138,40 +138,37 @@ p{
     margin-top: 1px;
 }
 
-.Container .box-work, .box-work-1{
+.Container, .Container-1 .Box-work, .Box-work-1{
     height: 30px;
     width: 100%;
     margin-top: 7px;
 }
-.Container .box-work, .box-work-1 input{
+.Container, .Container-1 .Box-work, .Box-work-1 input{
     height: 100%;
     width: 30px;
     margin-left: 20px;
     vertical-align: middle;
 }
-.Container .box-work, .box-work-1 input:checked{
-    color: gray;
-    text-decoration:line-through;
-}
-.Container .box-work, .box-work-1  label{
+
+.Container, .Container-1 .Box-work, .Box-work-1  label{
     vertical-align: middle;
     height: 100%;
     width: 380px;
     margin-left: 20px;
 }
 
-.Container .box-work, .box-work-1 .Value-work{
+.Container, .Container-1 .Box-work, .Box-work-1 .Value-work{
     display: inline-block;
     font-size: 25px;
     text-transform: uppercase;
 }
-.Container .box-work, .box-work-1  span{
+.Container, .Container-1 .Box-work, .Box-work-1  span{
     width: 30px;
     height: 30px;
     vertical-align: middle;
 }
 
-.Container .box-work, .box-work-1 .Clear-work, .Clear-work-1{
+.Container, .Container-1 .Box-work, .Box-work-1 .Clear-work, .Clear-work-1{
     font-size: 25px;
     display: inline-block;
     text-transform: uppercase;
